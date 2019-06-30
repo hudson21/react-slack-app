@@ -5,3 +5,9 @@ React Developer tools
 ---------------------------
 
 github.com/reedbarger/react-slack-clone
+
+remove git files:
++ rm -rf .git
+
+--------------------> Semantic UI React
+https://react.semantic-ui.com/ 
