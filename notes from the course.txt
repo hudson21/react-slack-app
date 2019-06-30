@@ -1,0 +1,7 @@
+Chrome Store
+---------------------------
+Install Redux dev tools
+React Developer tools
+---------------------------
+
+github.com/reedbarger/react-slack-clone
