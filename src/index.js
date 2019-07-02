@@ -13,7 +13,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
 
 //Actions
-import { setUser } from './actions';
+import { setUser, clearUser } from './actions';
 
 //CSS
 import 'semantic-ui-css/semantic.min.css';
@@ -22,7 +22,7 @@ import 'semantic-ui-css/semantic.min.css';
 import App from './components/App';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
-
+import Spinner from './Spinner';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
@@ -33,12 +33,15 @@ class Root extends Component {
                 //console.log(user);
                 this.props.setUser(user);
                 this.props.history.push('/');
+            } else {
+                this.props.history.push('/login');
+                this.props.clearUser();
             }
         });
     }
 
     render() {
-        return(
+        return this.props.isLoading ? <Spinner /> : (
             <Switch>
                 <Route exact path="/" component={App} />
                 <Route path="/login" component={Login} />
@@ -48,7 +51,11 @@ class Root extends Component {
     }
 }
 
-const RootWithAuth = withRouter(connect(null, { setUser })(Root));
+const mapStateToProps = (state) => ({
+    isLoading: state.user.isLoading
+});
+
+const RootWithAuth = withRouter(connect(mapStateToProps, { setUser, clearUser })(Root));
 
 ReactDOM.render(
     <Provider store={store}>

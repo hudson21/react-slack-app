@@ -11,3 +11,12 @@ remove git files:
 
 --------------------> Semantic UI React
 https://react.semantic-ui.com/ 
+
+--------------------> Firebase Fetching Feature
+addListeners = () => {
+        let loadedChannels = [];
+        this.state.channelsRef.on('child_added', snap => {
+            loadedChannels.push(snap.val());
+            console.log(loadedChannels);
+        });
+    };
