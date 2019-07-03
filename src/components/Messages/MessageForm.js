@@ -80,9 +80,8 @@ class MessageForm extends Component {
             }, 
             () => {
                 this.state.uploadTask.on('state_changed', snap => {
-                    const percentUploaded = Math.round((snap.bytesTranferred / snap.totalBytes) * 100);
-                    this.props.isProgressBarVisible(percentUploaded);
-                    this.setState({ percentUploaded });
+                    const percentUploaded = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
+                    this.setState({ percentUploaded }); 
                 },
 
                 err => {
@@ -95,7 +94,8 @@ class MessageForm extends Component {
                 },
 
                 () => {
-                        this.state.uploadTask.snapshot.ref.getDownloadURL().then(downloadUrl => {
+                    this.state.uploadTask.snapshot.ref.getDownloadURL()
+                        .then(downloadUrl => {
                             this.sendFileMessage(downloadUrl, ref, pathToUpload);
                         })
                         .catch(err => {
@@ -153,6 +153,7 @@ class MessageForm extends Component {
 
                     <Button 
                         color="teal"
+                        disabled={uploadState === 'uploading'}
                         onClick={this.openModal}
                         content="Upload Media"
                         labelPosition="right"
@@ -169,7 +170,7 @@ class MessageForm extends Component {
 
                 <ProgressBar 
                     uploadState={uploadState}
-                    percetUploaded={percentUploaded}
+                    percentUploaded={percentUploaded}
                 />
 
             </Segment>

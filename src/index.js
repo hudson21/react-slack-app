@@ -27,7 +27,7 @@ import Spinner from './Spinner';
 const store = createStore(rootReducer, composeWithDevTools());
 
 class Root extends Component {
-    componentDidMount() {
+    componentWillMount() {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 //console.log(user);
