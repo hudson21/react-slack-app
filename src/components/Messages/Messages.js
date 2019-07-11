@@ -30,6 +30,15 @@ class Messages extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this.removeListeners();
+    }
+
+    removeListeners = () => {
+        this.state.messagesRef.off();
+        this.state.privateMessageRef.off();
+    };
+
     addListeners = (channelId) => {
         this.addMessageListener(channelId);
     };
