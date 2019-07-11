@@ -19,4 +19,8 @@ addListeners = () => {
             loadedChannels.push(snap.val());
             console.log(loadedChannels);
         });
-    };
+};
+
+---> deploy your app on react
+
+now --public (with the now cli)
