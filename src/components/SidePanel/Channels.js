@@ -42,8 +42,9 @@ class Channels extends Component {
     };
 
     addNotificationListener = (channelId) => {
+        // Here we are setting a listener to any value changed inside of the messages collection
         this.state.messagesRef.child(channelId).on('value', snap => {
-            if (this.state.channel) {
+            if (this.state.channel) { 
                 this.handleNotifications(channelId, this.state.channel.id, this.state.notifications, snap); 
             }
         });
@@ -63,7 +64,7 @@ class Channels extends Component {
                 }
             }
 
-                notifications[index].lastKnownTotal = snap.numChildren();
+            notifications[index].lastKnownTotal = snap.numChildren();
         } else {
             notifications.push({
                 id: channelId,
