@@ -137,7 +137,7 @@ class MessageForm extends Component {
         if (this.props.isPrivateChannel) {
             return `chat/private/${this.state.channel.id}`;
         } else {
-            return `chat/public`;
+            return `chat/public/`;
         } 
     };
     
