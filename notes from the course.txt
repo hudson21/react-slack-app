@@ -165,6 +165,7 @@ Depoying the React App to Firebase
     }
 7. firebase deploy
   1. https://react-slack-clone-69a3d.firebaseapp.com/login
+  2. https://codeartistry.io
 
 
 
